@@ -16,7 +16,8 @@ config :rustler_benchmark, RustlerBenchmarkWeb.Endpoint,
   secret_key_base: "w96yZopDVKjIDw8jOaScPk2MQRUk05gtlskmOxaxCl+0dvkfRhdSsAlVAfiC8yvb",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 
 # ## SSL Support
