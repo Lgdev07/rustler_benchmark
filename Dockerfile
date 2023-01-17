@@ -4,7 +4,12 @@ WORKDIR /rustler_benchmark
 
 RUN mix do local.hex --force, local.rebar --force
 
-RUN apk add npm inotify-tools
+RUN apk add npm inotify-tools curl bash rustup build-base
+
+# Get Rust
+RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
+ENV RUSTFLAGS="-C target-feature=-crt-static"
+ENV PATH="/root/.cargo/bin:${PATH}"
 
 # -----------------
 # BUILD

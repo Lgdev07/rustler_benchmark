@@ -45,7 +45,10 @@ defmodule RustlerBenchmark.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:tailwind, "~> 0.1.9", runtime: Mix.env() == :dev},
+      {:rustler_precompiled, "~> 0.4"},
+      {:rustler, "~> 0.26.0", optional: true}
     ]
   end
 
@@ -58,7 +61,7 @@ defmodule RustlerBenchmark.MixProject do
   defp aliases do
     [
       setup: ["deps.get"],
-      "assets.deploy": ["esbuild default --minify", "phx.digest"]
+      "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"]
     ]
   end
 end
