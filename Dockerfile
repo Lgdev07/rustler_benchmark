@@ -1,4 +1,4 @@
-FROM hexpm/elixir:1.14.0-erlang-25.1-alpine-3.14.3 AS base
+FROM hexpm/elixir:1.14.0-erlang-25.1-alpine-3.15.6 AS base
 
 WORKDIR /rustler_benchmark
 
@@ -34,14 +34,14 @@ RUN mix release
 # -----------------
 # PRODUCTION
 # -----------------
-FROM alpine:3.14.3
+FROM alpine:3.15.6
 
 WORKDIR /rustler_benchmark
 
 ARG MIX_ENV=prod
 
 # install dependencies
-RUN apk add ncurses-libs curl
+RUN apk add ncurses-libs curl libgcc libstdc++
 
 COPY --from=release /rustler_benchmark/_build/$MIX_ENV/rel/rustler_benchmark ./
 
