@@ -37,7 +37,7 @@ if config_env() == :prod do
   port = String.to_integer(System.get_env("PORT") || "4000")
 
   config :rustler_benchmark, RustlerBenchmarkWeb.Endpoint,
-    url: [host: host, port: 80, scheme: "https"],
+    url: [host: host, port: 80],
     http: [
       # Enable IPv6 and bind on all interfaces.
       # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
@@ -48,7 +48,7 @@ if config_env() == :prod do
     ],
     secret_key_base: secret_key_base
 
-  config :render_deploy, RenderDeployWeb.Endpoint, server: true
+  config :rustler_benchmark, RustlerBenchmarkWeb.Endpoint, server: true
 
   # ## Configuring the mailer
   #
