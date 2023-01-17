@@ -34,7 +34,7 @@ RUN mix release
 # -----------------
 # PRODUCTION
 # -----------------
-FROM alpine:3.14.3
+FROM alpine:3.15.6
 
 WORKDIR /rustler_benchmark
 
