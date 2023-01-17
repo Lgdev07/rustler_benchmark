@@ -1,4 +1,4 @@
-FROM hexpm/elixir:1.14.0-erlang-25.1-alpine-3.15.6 AS base
+FROM hexpm/elixir:1.14.0-erlang-25.1-alpine-3.14.3 AS base
 
 WORKDIR /rustler_benchmark
 
@@ -34,7 +34,7 @@ RUN mix release
 # -----------------
 # PRODUCTION
 # -----------------
-FROM alpine:3.15.6
+FROM alpine:3.14.3
 
 WORKDIR /rustler_benchmark
 
