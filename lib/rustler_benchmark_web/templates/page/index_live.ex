@@ -63,14 +63,16 @@ defmodule RustlerBenchmarkWeb.IndexLive do
 
   @impl true
   def handle_info({:elixir_factor_done, result, time}, socket) do
-    return = "Elixir: #{time} microseconds and #{Enum.join(result, ", ")}"
+    return = "Elixir: #{time} microseconds
+Prime factors: #{Enum.join(result, ", ")}"
 
     {:noreply, assign(socket, elixir: return)}
   end
 
   @impl true
   def handle_info({:rust_factor_done, result, time}, socket) do
-    return = "Rust: #{time} microseconds and #{Enum.join(result, ", ")}"
+    return = "Rust: #{time} microseconds
+Prime factors: #{Enum.join(result, ", ")}"
 
     {:noreply, assign(socket, rust: return)}
   end
