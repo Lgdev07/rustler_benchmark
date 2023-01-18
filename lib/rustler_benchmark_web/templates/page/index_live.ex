@@ -39,6 +39,8 @@ defmodule RustlerBenchmarkWeb.IndexLive do
     view_pid = self()
 
     spawn(fn ->
+      send(view_pid, {:rust_factor_done, ["Loading"], "Loading"})
+
       {time_in_microseconds, ret_val} =
         :timer.tc(fn -> RustlerBenchmark.Rust.Math.factors(String.to_integer(input_value)) end)
 
@@ -46,6 +48,8 @@ defmodule RustlerBenchmarkWeb.IndexLive do
     end)
 
     spawn(fn ->
+      send(view_pid, {:elixir_factor_done, ["Loading"], "Loading"})
+
       {time_in_microseconds, ret_val} =
         :timer.tc(fn ->
           RustlerBenchmark.Elixir.Math.factors_for(String.to_integer(input_value))
