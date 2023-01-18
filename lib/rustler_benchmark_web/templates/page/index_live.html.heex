@@ -27,7 +27,7 @@
     </button>
 </div>
 
-<form phx-submit="save" id="content" class="font-calamity-bold text-center">
+<form phx-submit="save" id="content" phx-change="validate" class="font-calamity-bold text-center">
   <div class="grid grid-cols-9 gap-10 px-9">
     <div class="col-span-4">
       <span class="block sm:inline">Elixir</span>
@@ -37,9 +37,12 @@
     </div>
 
     <div class="col-span-1 self-center justify-self-center">
-      <input class="shadow mb-6 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="input_value" name="input_value" type="number">
+      <input value={@input_value} class="shadow mb-6 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="input_value" name="input_value" type="number">
       <button type="submit" class="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 px-4 border border-blue-700 rounded">
         Calculate
+      </button>
+      <button type="a" phx-click="benchmark_sync" class="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+        Benchmark sync
       </button>
     </div>
 

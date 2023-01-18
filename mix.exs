@@ -48,7 +48,9 @@ defmodule RustlerBenchmark.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:tailwind, "~> 0.1.9", runtime: Mix.env() == :dev},
       {:rustler_precompiled, "~> 0.4"},
-      {:rustler, "~> 0.26.0", optional: true}
+      {:rustler, "~> 0.26.0", optional: true},
+      {:benchee, "~> 1.1.0", only: :dev},
+      {:benchee_html, "~> 1.0", only: :dev}
     ]
   end
 
