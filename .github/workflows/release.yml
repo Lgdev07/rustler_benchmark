@@ -2,6 +2,7 @@ name: Build precompiled NIFs
 
 env:
   NIF_DIRECTORY: "native/rustlerbenchmark_math"
+  RUSTFLAGS: "-C target-feature=-crt-static"
 
 on:
   push:
@@ -83,7 +84,7 @@ jobs:
       shell: bash
       run: |
         if [ "${{ matrix.job.use-cross }}" == "true" ]; then
-          RUSTFLAGS="-C target-feature=-crt-static" cross build --release --target=${{ matrix.job.target }}
+          cross build --release --target=${{ matrix.job.target }}
         else
           cargo build --release --target=${{ matrix.job.target }} 
         fi
