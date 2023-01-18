@@ -83,9 +83,10 @@ jobs:
       shell: bash
       run: |
         if [ "${{ matrix.job.use-cross }}" == "true" ]; then
-          env RUSTFLAGS=-C target-feature=-crt-static cross build --release --target=${{ matrix.job.target }}
+          RUSTFLAGS=-C target-feature=-crt-static;
+          cross build --release --target=${{ matrix.job.target }}
         else
-          env RUSTFLAGS=-C target-feature=-crt-static cargo build --release --target=${{ matrix.job.target }} 
+          cargo build --release --target=${{ matrix.job.target }} 
         fi
     - name: Rename lib to the final name
       id: rename
