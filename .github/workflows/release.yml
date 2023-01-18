@@ -83,9 +83,9 @@ jobs:
       shell: bash
       run: |
         if [ "${{ matrix.job.use-cross }}" == "true" ]; then
-          cross build --release --target=${{ matrix.job.target }} -C target-feature=+crt-static
+          cross build --release --target=${{ matrix.job.target }} -- -C target-feature=-crt-static
         else
-          cargo build --release --target=${{ matrix.job.target }} -C target-feature=+crt-stati
+          cargo build --release --target=${{ matrix.job.target }} -- -C target-feature=-crt-static
         fi
     - name: Rename lib to the final name
       id: rename
