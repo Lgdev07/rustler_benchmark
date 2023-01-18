@@ -82,11 +82,10 @@ jobs:
     - name: Build
       shell: bash
       run: |
-        RUSTFLAGS="-C target-feature=-crt-static";
         if [ "${{ matrix.job.use-cross }}" == "true" ]; then
-          cross build --release --target=${{ matrix.job.target }}
+          cross build --release --target=${{ matrix.job.target }} -C target-feature=+crt-static
         else
-          cargo build --release --target=${{ matrix.job.target }}
+          cargo build --release --target=${{ matrix.job.target }} -C target-feature=+crt-stati
         fi
     - name: Rename lib to the final name
       id: rename
